@@ -11,3 +11,13 @@ describe('Price calculator', () => {
     expect(pricePerUnit).toEqual(1.79);
   });
 });
+
+type Item = {
+  name: string;
+  cost: number;
+  revenue: number;
+};
+
+function calculatePricePerUnitOf(item: Item) {
+  throw new Error('Function not implemented.');
+}
