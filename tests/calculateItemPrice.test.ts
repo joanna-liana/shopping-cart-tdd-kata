@@ -1,5 +1,5 @@
 import { Tax } from '../src/Item';
-import { calculateFinalPriceOf, calculateUnitPriceOf } from '../src/priceCalculator';
+import { calculateFinalPriceOf } from '../src/priceCalculator';
 import { PricedItem } from '../src/PricedItem';
 
 describe('Calculate item price use case', () => {
@@ -37,33 +37,6 @@ describe('Calculate item price use case', () => {
     revenue: 0.12,
     tax: Tax.FIRST_NECESSITY
   };
-
-  it.each([
-    [
-      ICEBERG,
-      1.79
-    ],
-    [
-      TOMATO,
-      0.60
-    ],
-    [
-      CHICKEN,
-      1.51
-    ],
-    [
-      BREAD,
-      0.80
-    ],
-    [
-      CORN,
-      1.36
-    ]
-  ])('returns the price per unit', (item, expectedPrice) => {
-    const pricePerUnit = calculateUnitPriceOf(item);
-
-    expect(pricePerUnit).toEqual(expectedPrice);
-  });
 
   it.each([
     [

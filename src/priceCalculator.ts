@@ -1,10 +1,10 @@
 import { Item } from './Item';
 
-function roundUp(originalNumber: number) {
+export function roundUp(originalNumber: number) {
   return Math.ceil(originalNumber * 100) / 100;
 }
 
-export function calculateUnitPriceOf(item: Item) {
+function calculateUnitPriceOf(item: Item) {
   const pricePerUnit = (item.cost * item.revenue) + item.cost;
 
   return roundUp(pricePerUnit);
