@@ -3,7 +3,7 @@ export enum Tax {
   FIRST_NECESSITY = 0.1
 }
 
-export type Item = {
+export type Product = {
   name: string;
   cost: number;
   revenue: number;

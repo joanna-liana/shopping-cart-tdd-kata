@@ -1,7 +1,7 @@
-import { Tax } from '../src/Item';
-import { PricedItem } from '../src/PricedItem';
+import { PricedProduct } from '../src/PricedProduct';
+import { Tax } from '../src/Product';
 
-describe('Calculate item price use case', () => {
+describe('Calculate product price use case', () => {
   const ICEBERG = {
     name: 'Iceberg',
     cost: 1.55,
@@ -40,52 +40,52 @@ describe('Calculate item price use case', () => {
   describe('Priced Item', () => {
     it.each([
       [
-        new PricedItem(ICEBERG),
+        new PricedProduct(ICEBERG),
         1.79
       ],
       [
-        new PricedItem(TOMATO),
+        new PricedProduct(TOMATO),
         0.60
       ],
       [
-        new PricedItem(CHICKEN),
+        new PricedProduct(CHICKEN),
         1.51
       ],
       [
-        new PricedItem(BREAD),
+        new PricedProduct(BREAD),
         0.80
       ],
       [
-        new PricedItem(CORN),
+        new PricedProduct(CORN),
         1.36
       ]
-    ])('returns the price per unit', (item, expectedPrice) => {
-      expect(item.unitPrice).toEqual(expectedPrice);
+    ])('returns the price per unit', (product, expectedPrice) => {
+      expect(product.unitPrice).toEqual(expectedPrice);
     });
 
     it.each([
       [
-        new PricedItem(ICEBERG),
+        new PricedProduct(ICEBERG),
         2.17
       ],
       [
-        new PricedItem(TOMATO),
+        new PricedProduct(TOMATO),
         0.73
       ],
       [
-        new PricedItem(CHICKEN),
+        new PricedProduct(CHICKEN),
         1.83
       ],
       [
-        new PricedItem(BREAD),
+        new PricedProduct(BREAD),
         0.88
       ],
       [
-        new PricedItem(CORN),
+        new PricedProduct(CORN),
         1.50
       ]
-    ])('returns the final item price', (item, expectedPrice) => {
-      expect(item.finalPrice).toEqual(expectedPrice);
+    ])('returns the final product price', (product, expectedPrice) => {
+      expect(product.finalPrice).toEqual(expectedPrice);
     });
   });
 });
