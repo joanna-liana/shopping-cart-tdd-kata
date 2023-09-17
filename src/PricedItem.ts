@@ -1,29 +1,21 @@
-import { Tax } from './Item';
-
-type ItemProps = {
-  name: string;
-  cost: number;
-  revenue: number;
-  tax: Tax;
-};
+import { Item } from './Item';
 
 export function roundUp(originalNumber: number) {
   return Math.ceil(originalNumber * 100) / 100;
 }
 
 export class PricedItem {
-  constructor(private readonly props: ItemProps) {}
+  constructor(private readonly item: Item) {}
 
   get unitPrice() {
-    const item = this.props;
-    const pricePerUnit = (item.cost * item.revenue) + item.cost;
+    const { cost, revenue } = this.item;
+    const unitPrice = (cost * revenue) + cost;
 
-    return roundUp(pricePerUnit);
+    return roundUp(unitPrice);
   }
 
   get finalPrice() {
-    const item = this.props;
-    const taxValue = Number((this.unitPrice * item.tax).toPrecision(2));
+    const taxValue = Number((this.unitPrice * this.item.tax).toPrecision(2));
     const finalPrice = this.unitPrice + taxValue;
 
     return roundUp(finalPrice);
