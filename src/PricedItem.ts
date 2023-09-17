@@ -1,5 +1,4 @@
 import { Tax } from './Item';
-import { roundUp } from './priceCalculator';
 
 type ItemProps = {
   name: string;
@@ -7,6 +6,10 @@ type ItemProps = {
   revenue: number;
   tax: Tax;
 };
+
+export function roundUp(originalNumber: number) {
+  return Math.ceil(originalNumber * 100) / 100;
+}
 
 export class PricedItem {
   constructor(private readonly props: ItemProps) {}
