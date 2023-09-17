@@ -90,5 +90,30 @@ describe('Calculate item price use case', () => {
     ])('returns the price per unit', (item, expectedPrice) => {
       expect(item.unitPrice).toEqual(expectedPrice);
     });
+
+    it.each([
+      [
+        new PricedItem(ICEBERG),
+        2.17
+      ],
+      [
+        new PricedItem(TOMATO),
+        0.73
+      ],
+      [
+        new PricedItem(CHICKEN),
+        1.83
+      ],
+      [
+        new PricedItem(BREAD),
+        0.88
+      ],
+      [
+        new PricedItem(CORN),
+        1.50
+      ]
+    ])('returns the final item price', (item, expectedPrice) => {
+      expect(item.finalPrice).toEqual(expectedPrice);
+    });
   });
 });
