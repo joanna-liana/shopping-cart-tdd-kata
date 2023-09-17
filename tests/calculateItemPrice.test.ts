@@ -1,7 +1,7 @@
 import { Tax } from '../src/Item';
 import { calculateFinalPriceOf, calculateUnitPriceOf } from '../src/priceCalculator';
 
-describe('Price calculator', () => {
+describe('Calculate item price use case', () => {
   const ICEBERG = {
     name: 'Iceberg',
     cost: 1.55,
