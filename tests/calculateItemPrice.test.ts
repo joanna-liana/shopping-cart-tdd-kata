@@ -1,5 +1,6 @@
 import { Tax } from '../src/Item';
 import { calculateFinalPriceOf, calculateUnitPriceOf } from '../src/priceCalculator';
+import { PricedItem } from '../src/PricedItem';
 
 describe('Calculate item price use case', () => {
   const ICEBERG = {
@@ -89,5 +90,16 @@ describe('Calculate item price use case', () => {
     const pricePerUnit = calculateFinalPriceOf(item);
 
     expect(pricePerUnit).toEqual(expectedPrice);
+  });
+
+  describe('Priced Item', () => {
+    it.each([
+      [
+        new PricedItem(ICEBERG),
+        1.79
+      ],
+    ])('returns the price per unit', (item, expectedPrice) => {
+      expect(item.unitPrice).toEqual(expectedPrice);
+    });
   });
 });
