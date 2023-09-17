@@ -1,5 +1,5 @@
 import { Tax } from './Item';
-import { calculateFinalPriceOf, roundUp } from './priceCalculator';
+import { roundUp } from './priceCalculator';
 
 type ItemProps = {
   name: string;
@@ -19,6 +19,10 @@ export class PricedItem {
   }
 
   get finalPrice() {
-    return calculateFinalPriceOf(this.props);
+    const item = this.props;
+    const taxValue = Number((this.unitPrice * item.tax).toPrecision(2));
+    const finalPrice = this.unitPrice + taxValue;
+
+    return roundUp(finalPrice);
   }
 }
