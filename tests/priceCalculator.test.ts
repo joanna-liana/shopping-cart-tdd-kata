@@ -18,6 +18,12 @@ type Item = {
   revenue: number;
 };
 
+function roundUp(originalNumber: number) {
+  return Math.ceil(originalNumber * 100) / 100;
+}
+
 function calculatePricePerUnitOf(item: Item) {
-  throw new Error('Function not implemented.');
+  const pricePerUnit = (item.cost * item.revenue) + item.cost;
+
+  return roundUp(pricePerUnit);
 }
